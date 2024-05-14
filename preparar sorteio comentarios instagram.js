@@ -31,8 +31,8 @@ const loadMoreContent = async () => {
 
         await sleep(5000); // Espera 3 segundos para garantir
     }
-    lLoadingComments = false
-    console.log("Fim do conteúdo alcançado. Não há mais conteúdo para carregar.");
+    lLoadingComments = false;
+    alert("Fim do conteúdo alcançado. Verifique se não há mais comentários, caso exista clique para carregar mais comentários.");
 };
 
 // Função para criar o arquivo TXT e iniciar o download
@@ -130,7 +130,7 @@ function main() {
   
     lDownloadButton.addEventListener("click", () => {
         if (lLoadingComments){
-            console.log("Ainda estamos carregando o conteúdo, por favor espere.");
+            alert("Ainda estamos carregando o conteúdo, por favor espere.");
         } else
             downloadFile();
     });
