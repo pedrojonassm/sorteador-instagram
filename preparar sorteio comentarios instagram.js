@@ -114,16 +114,18 @@ const generateTextWithMentions = () => {
   const minMentions = 1;
   let content = "";
   let start = 1;
+  let lIndex = 1;
   Object.entries(commentsMap).forEach(([user, mentions]) => {
     if (mentions.length > minMentions) {
       const totalNumbers = Math.ceil(mentions.length / minMentions); // Calcula o número total de números
       const end = start + totalNumbers - 1; // Calcula o final do intervalo
-      content += `${user} marcou ${
+      content += `${lIndex}. ${user} marcou ${
         mentions.length
       }, isso lhe dá ${totalNumbers} número${
         totalNumbers > 1 ? "s" : ""
       }: De ${start} até ${end}\n`;
       start = end + 1;
+      lIndex++;
     }
   });
   return content;
@@ -152,15 +154,16 @@ const generateUserCount = () => {
 const generateTextWithUsers = () => {
   const commentsMap = generateUserCount();
 
-  const minMentions = 1;
   let content = "";
   let start = 1;
+  let lIndex = 1;
   Object.entries(commentsMap).forEach(([user, count]) => {
     const end = start + count - 1; // Calcula o final do intervalo
-    content += `${user} comentou ${count} vezes, isso lhe dá ${count} número${
+    content += `${lIndex}. ${user} comentou ${count} vezes, isso lhe dá ${count} número${
       count > 1 ? "s" : ""
     }: De ${start} até ${end}\n`;
     start = end + 1;
+    lIndex++;
   });
   return content;
 };
